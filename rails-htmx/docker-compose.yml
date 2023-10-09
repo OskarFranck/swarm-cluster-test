@@ -1,0 +1,34 @@
+version: '3.7'
+
+services:
+  web:
+    build:
+      context: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0' -e development
+    ports:
+      - "3009:3000"
+    volumes:
+      - ./:/app
+    networks:
+      - vmp-net
+    depends_on:
+      - db 
+    labels:
+      - traefik.http.routers.web.rule=Host(`web.localhost`)
+  db:
+    image: postgres:14.5-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - vmp-net
+volumes:
+  db:
+    driver: local
+
+networks:
+  vmp-net:
+    external: true

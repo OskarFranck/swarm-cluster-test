@@ -1,0 +1,65 @@
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/home">
+      <%= image_tag "favicon.png", class: "logo-round" %>
+    </a>
+
+    <!-- Custom script to handle burger -->
+    <script>
+      function toggleMenu() {
+        var menu = document.querySelector('.navbar-menu');
+        menu.classList.toggle('active');
+      }
+    </script>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" hx-trigger="click" onClick="toggleMenu()">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="/about">
+        About Me
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Projects
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            Prod 1 
+          </a>
+          <a class="navbar-item">
+            Prod 2
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Contact Me
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="p-1" href="/cv" >
+            <%= image_tag "me.png", class: "logo-round" %>
+          </a>
+          <!--public? https://se.linkedin.com/in/oskar-franck-7b34aa1b6 -->
+          <a class="p-1" href="https://www.linkedin.com/in/oskar-franck-7b34aa1b6" target="_blank">
+            <%= image_tag "linkedin.png", class: "logo-round" %>
+          </a>
+          <a class="p-1" href="https://github.com/OskarFranck" target="_blank">
+            <%= image_tag "github.png", class: "logo-round" %>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
